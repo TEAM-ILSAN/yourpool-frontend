@@ -1,15 +1,18 @@
-import styled from '@emotion/styled';
-import { MouseEventHandler } from 'react';
+import styled from '@emotion/native';
 
 interface ButtonProps {
   text: string;
   isDisabled?: boolean;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: Function;
 }
 
-const Button = ({ text, isDisabled, onClick }: ButtonProps) => {
+const Button = ({text, isDisabled, onClick}: ButtonProps) => {
   return (
-    <Container onClick={onClick} disabled={isDisabled}>
+    <Container
+      onPress={() => {
+        onClick;
+      }}
+      disabled={isDisabled}>
       {text}
     </Container>
   );
@@ -17,10 +20,10 @@ const Button = ({ text, isDisabled, onClick }: ButtonProps) => {
 
 export default Button;
 
-const Container = styled.button`
+const Container = styled.TouchableOpacity<{disabled?: boolean}>`
   width: 100%;
   //임의로 height
   height: 50px;
-  background: ${({ disabled }) => (disabled ? 'gray' : 'black')};
+  background:${props => (props.disabled ? 'gray' : 'black')}
   color: white;
 `;
