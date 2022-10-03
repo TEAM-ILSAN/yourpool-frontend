@@ -1,10 +1,9 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
-  // TODO: 변경 예정
   baseURL: 'https://api.spotify.com/v1',
   timeout: 1000,
-  headers: {Authorization: `Bearer ${process.env.AUTH_TOKEN}`},
+  headers: { Authorization: `Bearer ${process.env.AUTH_TOKEN}` },
 });
 
 interface AxiosCallType<T> {
@@ -17,13 +16,13 @@ export const getAxiosData = async <T>({
   url,
   key,
   params,
-}: AxiosCallType<T>): Promise<any> => {
+}: AxiosCallType<T>): Promise<T> => {
   try {
     const {
       data: {
-        [key]: {items},
+        [key]: { items },
       },
-    } = await axiosClient.get(url, {params});
+    } = await axiosClient.get(url, { params });
 
     return items;
   } catch (err) {
