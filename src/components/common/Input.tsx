@@ -1,5 +1,11 @@
+import React from 'react';
 import styled from '@emotion/styled';
-import { ChangeEventHandler, MouseEventHandler, useEffect, useRef } from 'react';
+import {
+  ChangeEventHandler,
+  MouseEventHandler,
+  useEffect,
+  useRef,
+} from 'react';
 
 interface InputProps {
   type?: string;
@@ -31,7 +37,9 @@ const Input = ({
   const inputRef = useRef(null);
 
   useEffect(() => {
-    if (!isFocused) return;
+    if (!isFocused) {
+      return;
+    }
 
     inputRef.current.focus();
   }, []);
@@ -63,9 +71,9 @@ const Container = styled.div`
 `;
 
 const StyledInput = styled.input<{
-    isSelectable?: boolean;
-    isValid?: boolean;
-  }>`
+  isSelectable?: boolean;
+  isValid?: boolean;
+}>`
   border: 1px solid ${({ isValid }) => (isValid ? 'blue' : 'red')};
   cursor: ${({ isSelectable }) => (isSelectable ? 'pointer' : 'text')};
   :focus {

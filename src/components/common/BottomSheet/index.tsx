@@ -1,42 +1,43 @@
-import styled from '@emotion/styled';
-import {MouseEventHandler} from 'react';
-import BottomSheetHeader from './BottomSheetHeader';
-import {useBottomSheet} from '@/hooks/useBottomSheet';
+import React, { useCallback, useMemo, useRef } from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+import BottomSheet from '@gorhom/bottom-sheet';
 
-interface BottomSheetProps {
-  isDisabled: boolean;
-  onClick?: MouseEventHandler<HTMLElement>;
-}
+const CommonBottomSheet = () => {
+  // ref
+  const bottomSheetRef = useRef<BottomSheet>(null);
 
-const BottomSheet = ({isDisabled, onClick}: BottomSheetProps) => {
-  const {sheet} = useBottomSheet();
+  // variables
+  const snapPoints = useMemo(() => ['25%', '50%'], []);
+  const handleSheetChanges = useCallback((index: number) => {
+    console.log('handleSheetChanges', index);
+  }, []);
 
+  // renders
   return (
-    <Wrapper ref={sheet}>
-      <BottomSheetHeader />
-      <BottomSheetContent />
-    </Wrapper>
+    <View style={styles.container}>
+      <BottomSheet
+        ref={bottomSheetRef}
+        index={1}
+        snapPoints={snapPoints}
+        onChange={handleSheetChanges}>
+        <View style={styles.contentContainer}>
+          <Text>Awesome 🎉</Text>
+        </View>
+      </BottomSheet>
+    </View>
   );
 };
 
-export default BottomSheet;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: 'grey',
+  },
+  contentContainer: {
+    flex: 1,
+    alignItems: 'center',
+  },
+});
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  z-index: 1;
-  top: 100;
-  left: 0;
-  right: 0;
-  border-top-left-radius: 0.8rem;
-  border-top-right-radius: 0.8rem;
-  background-color: #fff;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.6);
-  height: 100%;
-`;
-
-const BottomSheetContent = styled.div`
-  color: white;
-  border: 0.1rem solid blue;
-`;
+export default CommonBottomSheet;
