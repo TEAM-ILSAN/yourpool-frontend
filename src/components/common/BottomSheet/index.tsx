@@ -1,20 +1,20 @@
 import styled from '@emotion/styled';
-import { MouseEventHandler } from 'react';
+import {MouseEventHandler} from 'react';
 import BottomSheetHeader from './BottomSheetHeader';
-import { useBottomSheet } from '@/hooks/useBottomSheet';
+import {useBottomSheet} from '@/hooks/useBottomSheet';
 
 interface BottomSheetProps {
   isDisabled: boolean;
   onClick?: MouseEventHandler<HTMLElement>;
 }
 
-const BottomSheet = ({ isDisabled, onClick }: BottomSheetProps) => {
-  const { sheet } = useBottomSheet();
+const BottomSheet = ({isDisabled, onClick}: BottomSheetProps) => {
+  const {sheet} = useBottomSheet();
 
   return (
     <Wrapper ref={sheet}>
-      <BottomSheetHeader></BottomSheetHeader>
-      <BottomSheetContent></BottomSheetContent>
+      <BottomSheetHeader />
+      <BottomSheetContent />
     </Wrapper>
   );
 };
