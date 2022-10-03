@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const axiosClient = axios.create({
+  // TODO: 변경 예정
   baseURL: 'https://api.spotify.com/v1',
   timeout: 1000,
   headers: {Authorization: `Bearer ${process.env.AUTH_TOKEN}`},
