@@ -9,6 +9,7 @@ const color = {
   primary: '#A9ECE0',
   white: '#FFF',
   black: '#000',
+  lightgrey: '#F6F6F6',
   darkgrey: '#605A5A',
 };
 
@@ -29,8 +30,17 @@ const gutter = {
   size136: '13.6rem',
 };
 
-export default {
-  font,
-  color,
-  gutter,
+const zIndexes = {
+  default: 1,
+  floor: 10,
+  cloud: 100,
+  space: 1000,
 };
+
+const borderRadiuses = {
+  small: '0.2rem',
+  large: '0.4rem',
+  circle: '100%',
+};
+
+export {font, color, gutter, zIndexes, borderRadiuses};

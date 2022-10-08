@@ -1,16 +1,16 @@
-import styled from '@emotion/styled';
-import { MouseEventHandler } from 'react';
-import { CategoryItem } from '@/types/category';
-import { DynamicIcon } from '@/components/common';
-import { zIndexes, borderRadiuses } from '@/styles/theme';
+import React from 'react';
+import styled from '@emotion/native';
+import {CategoryItem} from '@/types/category';
+import {DynamicIcon} from '@/components/common';
+import {zIndexes, borderRadiuses} from '@/styles/theme';
 
 interface CategoryBadgeProps extends CategoryItem {
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick: () => void;
 }
 
-const CategoryBadge = ({ color, label, onClick }: CategoryBadgeProps) => {
+const CategoryBadge = ({color, label, onClick}: CategoryBadgeProps) => {
   return (
-    <CategoryBadgeContainer color={color} onClick={onClick}>
+    <CategoryBadgeContainer color={color} onPress={onClick}>
       <DynamicIcon iconName={label} />
       <TintedBackground color={color} />
     </CategoryBadgeContainer>
@@ -19,11 +19,9 @@ const CategoryBadge = ({ color, label, onClick }: CategoryBadgeProps) => {
 
 export default CategoryBadge;
 
-const CategoryBadgeContainer = styled.button<{ color: string }>`
-  display: flex;
+const CategoryBadgeContainer = styled.TouchableOpacity<{color: string}>`
   justify-content: center;
   align-items: center;
-  overflow: hidden;
   position: relative;
 
   width: 5rem;
@@ -34,15 +32,15 @@ const CategoryBadgeContainer = styled.button<{ color: string }>`
     z-index: ${zIndexes.default};
 
     path {
-      fill: ${({ color }) => color};
+      fill: ${({color}) => color};
     }
   }
 `;
 
-const TintedBackground = styled.div<{ color: string }>`
+const TintedBackground = styled.View<{color: string}>`
   position: absolute;
   filter: brightness(1.5);
-  background-color: ${({ color }) => color};
+  background-color: ${({color}) => color};
   width: 100%;
   height: 100%;
 `;
