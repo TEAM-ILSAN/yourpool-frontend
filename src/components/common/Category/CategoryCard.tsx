@@ -1,16 +1,16 @@
-import styled from '@emotion/styled';
-import { CategoryItem } from '@/types/category';
-import { MouseEventHandler } from 'react';
-import { DynamicIcon } from '@/components/common';
-import { font, color, gutter, borderRadiuses } from '@/styles/theme';
+import React from 'react';
+import styled from '@emotion/native';
+import {CategoryItem} from '@/types/category';
+import {DynamicIcon} from '@/components/common';
+import {font, color, gutter, borderRadiuses} from '@/styles/theme';
 
 interface CategoryCardProps extends CategoryItem {
-  onClick?: MouseEventHandler<HTMLDivElement>;
+  onClick?: () => void;
 }
 
-const CategoryCard = ({ name, label, color, onClick }: CategoryCardProps) => {
+const CategoryCard = ({name, label, color, onClick}: CategoryCardProps) => {
   return (
-    <CategoryCardContainer color={color} onClick={onClick}>
+    <CategoryCardContainer color={color} onPress={onClick}>
       <CategoryIconWrapper>
         <DynamicIcon iconName={label} />
       </CategoryIconWrapper>
@@ -19,7 +19,7 @@ const CategoryCard = ({ name, label, color, onClick }: CategoryCardProps) => {
   );
 };
 
-const CategoryCardContainer = styled.div<{ color: string }>`
+const CategoryCardContainer = styled.TouchableOpacity<{color: string}>`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -27,17 +27,17 @@ const CategoryCardContainer = styled.div<{ color: string }>`
   padding: ${gutter.size8};
   width: 6.8rem;
   height: 8rem;
-  border: 0.2rem solid ${({ color }) => color};
+  border: 0.2rem solid ${({color}) => color};
   border-radius: ${borderRadiuses.large};
   background-color: ${color.lightgrey};
-  color: ${({ color }) => color};
+  color: ${({color}) => color};
 `;
 
-const CategoryIconWrapper = styled.div`
+const CategoryIconWrapper = styled.View`
   margin-top: ${gutter.size8};
 `;
 
-const CategoryName = styled.p`
+const CategoryName = styled.Text`
   font-size: ${font.size16};
 `;
 
