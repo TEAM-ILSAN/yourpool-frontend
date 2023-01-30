@@ -1,15 +1,16 @@
 import { isName } from '@/constants/common';
 import { verifyInput } from '@/utils/verifyInput';
-import { ChangeEvent, useEffect, useState } from 'react';
-import { Input } from '../common';
+import { useEffect, useState } from 'react';
+import { TextInput } from 'react-native';
 import { userInfoMock } from './__mocks__/userInfoMock';
 
 const Name = () => {
-  const [name, setName] = useState({ value: userInfoMock.user_info.properties.nickname, isValid: false });
+  const [name, setName] = useState({
+    value: userInfoMock.user_info.properties.nickname,
+    isValid: false,
+  });
 
-  const changeValue = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-
+  const changeValue = (value: string) => {
     setName({ ...name, value });
   };
 
@@ -19,16 +20,14 @@ const Name = () => {
 
   useEffect(() => {
     changeIsValid(verifyInput(isName, name.value));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [name.value]);
 
   return (
-    <Input
-      id="name"
+    <TextInput
       value={name.value}
-      title="이름"
-      placeHolder="이름"
-      isValid={name.isValid}
-      onChange={changeValue}
+      placeholder="이름"
+      onChangeText={changeValue}
     />
   );
 };
