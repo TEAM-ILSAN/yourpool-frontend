@@ -4,7 +4,7 @@ import {
   CardStyleInterpolators,
 } from '@react-navigation/stack';
 
-import ChatDetail from '../../../src/components/ChatRoom/ChatDetail';
+import ChatDetail from '../../../src/components/chatroom/ChatDetail';
 
 const ChatStack = createStackNavigator();
 

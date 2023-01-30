@@ -1,57 +1,53 @@
-import { ReactNode } from 'react';
-import styled from '@emotion/styled';
-import ChatEdgeLeftSvg from '@/assets/icons/chatedge-left.svg';
-import ChatEdgeRightSvg from '@/assets/icons/chatedge-right.svg';
-import { font, gutter, color } from '@/styles/theme';
+import styled from '@emotion/native';
+// TODO: svg icon RN에서 사용할수있게 하는 plugin?
+// import ChatEdgeLeftSvg from '@/assets/icons/chatedge-left.svg';
+// import ChatEdgeRightSvg from '@/assets/icons/chatedge-right.svg';
+
 import { EdgeDirection } from '@/constants/common';
 
 const ChatBubble = ({
   children,
   edgeLocation = EdgeDirection.LEFT,
 }: {
-  children: ReactNode;
+  children: string;
   edgeLocation?: keyof typeof EdgeDirection;
 }): JSX.Element => {
   return (
     <StyledChatBubble>
       <ChatContent>{children}</ChatContent>
       {edgeLocation === EdgeDirection.LEFT && (
-        <ChatBubbleLeft>
-          <ChatEdgeLeftSvg />
-        </ChatBubbleLeft>
+        <ChatBubbleLeft>{/* <ChatEdgeLeftSvg /> */}</ChatBubbleLeft>
       )}
       {edgeLocation === EdgeDirection.RIGHT && (
-        <ChatBubbleRight>
-          <ChatEdgeRightSvg />
-        </ChatBubbleRight>
+        <ChatBubbleRight>{/* <ChatEdgeRightSvg /> */}</ChatBubbleRight>
       )}
     </StyledChatBubble>
   );
 };
 
-const StyledChatBubble = styled.div`
-  display: inline-flex;
-  position: relative;
-  padding: 1.5rem;
-`;
-
-const ChatContent = styled.p`
+const StyledChatBubble = styled.View`
   display: flex;
-  font-size: ${font.size16};
-  background-color: ${color.white};
-  border-radius: 0.6rem;
-  padding: ${gutter.size8};
+  position: relative;
+  padding: 15px;
 `;
 
-const ChatBubbleLeft = styled.div`
+const ChatContent = styled.Text`
+  display: flex;
+  font-size: 16px;
+  background-color: 'white';
+  border-radius: 6px;
+  padding: 8px;
+`;
+
+const ChatBubbleLeft = styled.View`
   position: absolute;
-  top: 2.8rem;
+  top: 28px;
   left: 0;
 `;
 
-const ChatBubbleRight = styled.div`
+const ChatBubbleRight = styled.View`
   position: absolute;
-  top: 2.8rem;
+  top: 28px;
   right: 0;
 `;
 

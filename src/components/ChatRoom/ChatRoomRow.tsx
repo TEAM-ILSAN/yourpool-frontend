@@ -1,8 +1,8 @@
 import { PropsWithChildren } from 'react';
 import styled from '@emotion/styled';
 import { EdgeDirection } from '@/constants/common';
-import ChatProfileImg from '@/components/ChatRoom/ChatProfileImg';
-import ChatBubble from '@/components/ChatRoom/ChatBubble';
+import ChatProfileImg from '@/components/chatroom/ChatProfileImg';
+import ChatBubble from '@/components/chatroom/ChatBubble';
 import { gutter } from '@/styles/theme';
 
 interface ChatRoomRowProps {

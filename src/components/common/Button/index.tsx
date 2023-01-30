@@ -1,4 +1,5 @@
 import styled from '@emotion/native';
+import { Text } from 'react-native';
 
 interface ButtonProps {
   text: string;
@@ -6,21 +7,21 @@ interface ButtonProps {
   onClick?: Function;
 }
 
-const Button = ({text, isDisabled, onClick}: ButtonProps) => {
+const Button = ({ text, isDisabled, onClick }: ButtonProps) => {
   return (
     <Container
       onPress={() => {
         onClick;
       }}
       disabled={isDisabled}>
-      {text}
+      <Text>{text}</Text>
     </Container>
   );
 };
 
 export default Button;
 
-const Container = styled.TouchableOpacity<{disabled?: boolean}>`
+const Container = styled.TouchableOpacity<{ disabled?: boolean }>`
   width: 100%;
   //임의로 height
   height: 50px;

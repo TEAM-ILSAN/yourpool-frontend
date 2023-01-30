@@ -2,7 +2,7 @@ import { FormEventHandler } from 'react';
 import styled from '@emotion/styled';
 import SendIcon from '@/assets/icons/send.svg';
 
-const ChatProfileImg = ({
+const ChatForm = ({
   inputHandler,
   submitHandler,
 }: {
@@ -36,4 +36,4 @@ const ChatInput = styled.input`
   border-radius: 3rem;
 `;
 
-export default ChatProfileImg;
+export default ChatForm;
