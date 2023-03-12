@@ -2,9 +2,9 @@ labels:
   'enhancement':
     - '\bfeat\b'
 configuration:
-  - package*.json
   - '**/tsconfig*.json'
 documentation:
   - '**/*.md'
 dependencies:
+  - package*.json
   - '**/yarn.lock'
