@@ -1,0 +1,10 @@
+labels:
+  'enhancement':
+    - '\bfeat\b'
+configuration:
+  - '**/tsconfig*.json'
+documentation:
+  - '**/*.md'
+dependencies:
+  - package*.json
+  - '**/yarn.lock'
