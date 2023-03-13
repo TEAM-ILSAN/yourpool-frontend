@@ -1,14 +1,15 @@
 import { isLocation } from '@/constants/common';
 import { verifyInput } from '@/utils/verifyInput';
-import { ChangeEvent, useEffect, useState } from 'react';
-import { Input } from '../common';
+import { useEffect, useState } from 'react';
+import { TextInput } from 'react-native';
 
 const Location = () => {
-  const [location, setLocation] = useState({ value: '월드컵로7길 19', isValid: false });
+  const [location, setLocation] = useState({
+    value: '월드컵로7길 19',
+    isValid: false,
+  });
 
-  const changeValue = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-
+  const changeValue = (value: string) => {
     setLocation({ ...location, value });
   };
 
@@ -18,16 +19,14 @@ const Location = () => {
 
   useEffect(() => {
     changeIsValid(verifyInput(isLocation, location.value));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location.value]);
 
   return (
-    <Input
-      id="location"
+    <TextInput
       value={location.value}
-      title="활동 지역"
-      placeHolder="활동 지역"
-      isValid={location.isValid}
-      onChange={changeValue}
+      placeholder="활동 지역"
+      onChangeText={changeValue}
     />
   );
 };
