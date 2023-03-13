@@ -1,37 +1,39 @@
-import { PropsWithChildren } from 'react';
-import styled from '@emotion/styled';
+import * as React from 'react';
+import styled from '@emotion/native';
 import { EdgeDirection } from '@/constants/common';
 import ChatProfileImg from '@/components/chatroom/ChatProfileImg';
 import ChatBubble from '@/components/chatroom/ChatBubble';
-import { gutter } from '@/styles/theme';
 
 interface ChatRoomRowProps {
+  text: string;
   imgAlt?: string;
   imgSrc?: string;
   isMyChat: boolean;
 }
 
-const ChatRoomRow = ({ children, imgSrc, isMyChat }: PropsWithChildren<ChatRoomRowProps>) => {
+const ChatRoomRow = ({ text, imgSrc, isMyChat }: ChatRoomRowProps) => {
   return (
     <StyledChatRoomRow isMyChat={isMyChat}>
-      {isMyChat && <ChatBubble edgeLocation={EdgeDirection.RIGHT}>{children}</ChatBubble>}
+      {isMyChat && (
+        <ChatBubble edgeLocation={EdgeDirection.RIGHT}>{text}</ChatBubble>
+      )}
       {!isMyChat && (
         <>
-          <ChatProfileImg alt="profile-img" src={imgSrc} />
-          <ChatBubble>{children}</ChatBubble>
+          {imgSrc && <ChatProfileImg alt="profile-img" src={imgSrc} />}
+          <ChatBubble>{text}</ChatBubble>
         </>
       )}
     </StyledChatRoomRow>
   );
 };
 
-const StyledChatRoomRow = styled.div<{ isMyChat: boolean }>`
+const StyledChatRoomRow = styled.View<{ isMyChat: boolean }>`
   display: flex;
-  padding: ${gutter.size16};
+  padding: 16px;
   ${({ isMyChat }) => isMyChat && 'justify-content: flex-end'};
 
   > img {
-    margin-right: ${gutter.size8};
+    margin-right: 8px;
   }
 `;
 

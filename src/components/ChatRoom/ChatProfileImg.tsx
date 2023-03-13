@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from '@emotion/native';
 import { Image } from 'react-native';
 
 const ChatProfileImg = ({
@@ -15,9 +15,9 @@ const ChatProfileImg = ({
   );
 };
 
-const StyledChatProfileImg = styled.div`
-  width: 6rem;
-  height: 6rem;
+const StyledChatProfileImg = styled.View`
+  width: 60px;
+  height: 60px;
   border-radius: 100%;
 `;
 

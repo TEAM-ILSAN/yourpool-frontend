@@ -1,3 +1,4 @@
+import * as React from 'react';
 import styled from '@emotion/native';
 // TODO: svg icon RN에서 사용할수있게 하는 plugin?
 // import ChatEdgeLeftSvg from '@/assets/icons/chatedge-left.svg';
@@ -34,8 +35,8 @@ const StyledChatBubble = styled.View`
 const ChatContent = styled.Text`
   display: flex;
   font-size: 16px;
-  background-color: 'white';
-  border-radius: 6px;
+  background-color: #fff;
+  border-radius: 60px;
   padding: 8px;
 `;
 
