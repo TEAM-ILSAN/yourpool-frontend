@@ -1,39 +1,40 @@
-import { FormEventHandler } from 'react';
-import styled from '@emotion/styled';
+import * as React from 'react';
+import type { GestureResponderEvent } from 'react-native';
+import styled from '@emotion/native';
 import SendIcon from '@/assets/icons/send.svg';
 
-const ChatProfileImg = ({
+const ChatForm = ({
   inputHandler,
   submitHandler,
 }: {
-  inputHandler: FormEventHandler;
-  submitHandler: FormEventHandler;
+  inputHandler: (v: string) => void;
+  submitHandler: (e: GestureResponderEvent) => void;
 }): JSX.Element => {
   return (
-    <StyledChatForm onSubmit={submitHandler}>
-      <AbsoluteButton type="submit">
+    <StyledChatForm>
+      <AbsoluteButton title="" onPress={submitHandler}>
         <SendIcon />
       </AbsoluteButton>
-      <ChatInput onInput={inputHandler} />
+      <ChatInput onChangeText={inputHandler} />
     </StyledChatForm>
   );
 };
 
-const StyledChatForm = styled.form`
+const StyledChatForm = styled.View`
   position: relative;
 `;
 
-const AbsoluteButton = styled.button`
+const AbsoluteButton = styled.Button<{ children: Element }>`
   position: absolute;
-  right: 1.5rem;
-  top: 1.5rem;
+  right: 15px;
+  top: 15px;
 `;
 
-const ChatInput = styled.input`
+const ChatInput = styled.TextInput`
   width: 100%;
-  height: 6rem;
+  height: 60px;
   border: none;
-  border-radius: 3rem;
+  border-radius: 30px;
 `;
 
-export default ChatProfileImg;
+export default ChatForm;

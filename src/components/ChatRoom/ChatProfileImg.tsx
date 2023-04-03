@@ -1,19 +1,23 @@
-import styled from '@emotion/styled';
-import { Component } from 'react';
+import styled from '@emotion/native';
+import { Image } from 'react-native';
 
 const ChatProfileImg = ({
-  alt,
+  alt = '',
   src,
 }: {
-  alt: string;
+  alt?: string;
   src: string;
 }): JSX.Element => {
-  return <StyledChatProfileImg src={src} />;
+  return (
+    <StyledChatProfileImg>
+      <Image source={{ uri: src }} />
+    </StyledChatProfileImg>
+  );
 };
 
-const StyledChatProfileImg = styled.img`
-  width: 6rem;
-  height: 6rem;
+const StyledChatProfileImg = styled.View`
+  width: 60px;
+  height: 60px;
   border-radius: 100%;
 `;
 

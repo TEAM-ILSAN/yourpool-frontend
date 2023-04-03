@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 // 개별 스크린
 import Home from '../../src/components/Home/Home';
-import ChatList from '../../src/components/ChatRoom/ChatList';
+import ChatList from '../../src/components/chatroom/ChatList';
 import MyInfo from '../../src/components/MyInfo/MyInfo';
 
 // 네비게이터
